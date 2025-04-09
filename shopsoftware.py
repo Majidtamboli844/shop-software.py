@@ -1,9 +1,9 @@
-# Product class to handle product data
+
 class Product:
     def __init__(self, name, price, quantity):
-        self.name = name  # Name of the product
-        self.price = price  # Price of a single unit
-        self.quantity = quantity  # Available quantity
+        self.name = name  
+        self.price = price 
+        self.quantity = quantity 
 
     def update_quantity(self, quantity_sold):
         """Update the product quantity after a sale"""
@@ -15,15 +15,14 @@ class Product:
     def __str__(self):
         return f"{self.name} | Price: {self.price} | Quantity: {self.quantity}"
 
-# Shop class to manage products and sales
 class Shop:
     def __init__(self, shop_name, address, contact):
-        self.shop_name = shop_name  # Shop name
-        self.address = address  # Shop address
-        self.contact = contact  # Shop contact details
-        self.products = []  # List to hold product instances
-        self.tax_rate = 0.1  # Tax rate (10%)
-        self.sales = []  # List to track sales made
+        self.shop_name = shop_name 
+        self.address = address
+        self.contact = contact
+        self.products = [] 
+        self.tax_rate = 0.1  
+        self.sales = []  
 
     def add_product(self, name, price, quantity):
         """Add a new product to the shop"""
@@ -63,7 +62,6 @@ class Shop:
     def generate_invoice(self, sold_items):
         """Generate the invoice for sold products"""
         print("\n--- INVOICE ---")
-        # Shop Information on the Invoice
         print(f"Shop Name: {self.shop_name}")
         print(f"Address: {self.address}")
         print(f"Contact: {self.contact}")
@@ -85,12 +83,9 @@ class Shop:
         print(f"Total Tax: {total_tax}")
         print(f"Total Amount: {total_amount}")
 
-# Main function to interact with the shop
 def main():
-    # Create a shop with its information
-    shop = Shop("Tech World", "123 Tech Avenue, Silicon City", "Phone: 123-456-7890")
+    shop = Shop("Tech World", "katraj, Pune City", "Phone: 000-000-0000")
 
-    # Menu for managing the shop
     while True:
         print("\n--- Shop Management ---")
         print("1. Add Product")
@@ -99,39 +94,41 @@ def main():
         print("4. Sell Product")
         print("5. Generate Invoice")
         print("6. Exit")
+                
         
-        choice = input("Enter your choice: ")
+        choice = input("Enter your choice from up: ")
 
-        if choice == '1':  # Add product
+        if choice == '1':  
             name = input("Enter product name: ")
             price = float(input("Enter product price: "))
             quantity = int(input("Enter product quantity: "))
             shop.add_product(name, price, quantity)
             print(f"Product '{name}' added successfully.")
 
-        elif choice == '2':  # Delete product
+        elif choice == '2': 
             name = input("Enter product name to delete: ")
             shop.delete_product(name)
 
-        elif choice == '3':  # Display products
+        elif choice == '3':  
             shop.display_products()
 
-        elif choice == '4':  # Sell product
+        elif choice == '4':  
             product_name = input("Enter product name to sell: ")
             quantity_sold = int(input("Enter quantity to sell: "))
             price, unit_price = shop.sell_product(product_name, quantity_sold)
             if price > 0:
                 sold_items = [(product_name, quantity_sold, unit_price)]
 
-        elif choice == '5':  # Generate invoice
+        elif choice == '5':  
             shop.generate_invoice(sold_items)
 
-        elif choice == '6':  # Exit
+        elif choice == '6':  
             print("Exiting... Have a nice day!")
             break
         else:
             print("Invalid choice. Please try again.")
 
-# Run the main program
 if __name__ == "__main__":
     main()
+    
+
